@@ -64,6 +64,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
 import android.os.SystemClock;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
@@ -1435,6 +1436,7 @@ public class Launcher extends Activity
         if (mSearchDropTargetBar != null) {
             mSearchDropTargetBar.setup(this, dragController);
             mSearchDropTargetBar.setQsbSearchBar(getOrCreateQsbBar());
+            mSearchDropTargetBar.setVisibility(SystemProperties.getBoolean("persist.launcher.searchbar", true) ? View.VISIBLE : View.GONE);
         }
 
         if (getResources().getBoolean(R.bool.debug_memory_enabled)) {
